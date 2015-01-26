@@ -1,0 +1,49 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr height="25">
+      <th></th>
+      <th><%= sortable_column "Album", :column => "record_name" %></th>
+      <th><%= sortable_column "Artysta", :column => "artist_name"  %></th>
+      <th><%= sortable_column "Gatunek", :column => "genre" %></th>
+      <th><%= sortable_column "Rok wydania", :column => "release_year" %></th>
+      <th><%= sortable_column "Cena", :column => "price" %></th>
+      <th></th>
+      <th>
+        <%= form_tag records_path, :method => 'get' do %>
+          <%= hidden_field_tag :direction, params[:direction] %>
+          <%= hidden_field_tag :sort, params[:sort] %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Szukaj", :name => nil %>
+          </p>
+        <% end %>
+      </th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr height='20'></tr>
+    <% @records.each do |record| %>
+      <tr height="60">
+        <% album_cover = 'album covers/' + record.name.downcase.gsub(/\s/,'_') + '.jpg' %>
+        <td><%=image_tag(album_cover, height: '45', width: '45')%></td>
+        <td><%= record.name %></td>
+        <td><%= record.artist.name %></td>
+        <td><%= record.genre.name %></td>
+        <td><%= record.release_year %></td>
+        <td><%= record.price %></td>
+        <td><%= button_to 'Więcej', record %></td>
+        <td><%= button_to 'Dodaj do koszyka', record %></td>
+      </tr>
+      <tr height="5"></tr>
+      <tr height="5"></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @records %>
+
+<br>
