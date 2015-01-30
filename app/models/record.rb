@@ -1,4 +1,5 @@
-class Record < ActiveRecord::Base # Record from the Record Shop
+
+class Record < ActiveRecord::Base
   belongs_to :artist
   belongs_to :genre
 

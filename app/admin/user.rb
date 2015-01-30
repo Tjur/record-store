@@ -1,7 +1,7 @@
 ActiveAdmin.register User do
   permit_params :email
 
-  actions :index
+  actions :index, :show, :destroy
 
   filter :email, :as => :string
   filter :created_at, :as => :date_range
@@ -11,6 +11,14 @@ ActiveAdmin.register User do
     column :email
     column :created_at
     actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :email
+      row :created_at
+    end
   end
 
   # See permitted parameters documentation:

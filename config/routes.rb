@@ -20,11 +20,15 @@ Rails.application.routes.draw do
 
   post '/index', to: 'welcome#index'
 
-  get "log_out" => "sessions#destroy", :as => "log_out"
-  get "log_in" => "sessions#new", :as => "log_in"
-  get "sign_up" => "users#new", :as => "sign_up"
+  get "/log_in", to: "sessions#new", :as => "log_in"
+  post "/log_in", to: "sessions#create"
 
-  resources :welcome, :record, :users, :sessions
+  get "/log_out", to: "sessions#destroy", :as => "log_out"
+
+  get "/sign_up", to: "users#new", :as => "sign_up"
+  post "/users", to: 'users#create'
+
+  resources :record, :sessions
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

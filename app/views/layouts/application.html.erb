@@ -26,17 +26,25 @@
   <div id="element3">
     <div id="user_nav">
       <% if current_user %>
-        Zalogowany jako <%= current_user.email %>.
+        Zalogowany jako: <br>
+        <b><%= current_user.email %></b><br><br>
         <%= link_to "Wyloguj", log_out_path %>
       <% else %>
         <%= link_to "Zarejestruj się", sign_up_path %> lub
         <%= link_to "Zaloguj", log_in_path %>
       <% end %>
-    </div>
+    </div><br>
 
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %> 
+    <% flash.each do |name, message| %>
+    <% if message.kind_of?(Array) %>
+      <b>Podano nieprawidłowe dane:</b><br><br>
+      <% message.each do |msg| %>
+        <b style="color:#990000"><%= content_tag :div, msg, :id => "flash_#{name}" %></b><br>
+      <% end %>
+    <% else %>
+      <b><%= content_tag :div, message, :id => "flash_#{name}" %></b>
+    <% end %>
+    <% end %>
   </div>
 
   <div id="element2">

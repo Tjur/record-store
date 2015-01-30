@@ -28,8 +28,9 @@
     <tr height='20'></tr>
     <% @records.each do |record| %>
       <tr height="60">
-        <% album_cover = 'album covers/' + record.name.downcase.gsub(/\s/,'_') + '.jpg' %>
-        <td><%=image_tag(album_cover, height: '45', width: '45')%></td>
+        <% album_cover_path = 'album covers/' + record.name.downcase.gsub(/\s/,'_') + '.jpg' %>
+          <% album_cover_path = 'question_mark.png' if !File.exist?("#{Rails.root}/app/assets/images/" + album_cover_path) %>
+        <td><%=image_tag(album_cover_path, height: '45', width: '45')%></td>
         <td><%= record.name %></td>
         <td><%= record.artist.name %></td>
         <td><%= record.genre.name %></td>
