@@ -1,2 +1,13 @@
-<h1>Record#show</h1>
-<p>Find me in app/views/record/show.html.erb</p>
+<% album_cover_path = 'album covers/' + @record.name.downcase.gsub(/\s/,'_') + '.jpg' %>
+<% album_cover_path = 'question_mark.png' if !File.exist?("#{Rails.root}/app/assets/images/" + album_cover_path) %>
+<h1><%=image_tag(album_cover_path, height: '200', width: '200')%></h1><br>
+
+<p align='left'>Informacje o płycie</p><br>
+
+<div class="action_buttons_header" style="text-align: right;">
+  <ul style="list-style: none">
+    <li>Cena: <%= @record.price.to_s + '0 zł' %></li>
+    <li>Dostępna ilość: <%= 50 %></li><br>
+    <li><%= button_to 'Dodaj do koszyka', @record %></li>
+  </ul>
+</div>

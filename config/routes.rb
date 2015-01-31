@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'record/index', to: 'record#index', as: 'records'
 
   post 'record/index'
+  post 'record/:id', to: 'record#show'
 
   post '/index', to: 'welcome#index'
 
@@ -26,9 +27,15 @@ Rails.application.routes.draw do
   get "/log_out", to: "sessions#destroy", :as => "log_out"
 
   get "/sign_up", to: "users#new", :as => "sign_up"
-  post "/users", to: 'users#create'
 
-  resources :record, :sessions
+  post '/users', to: 'users#create'
+  post 'users/:id', to: 'users#show'
+  post 'users/:id/edit', to: 'users#edit'
+  delete '/users/:id', to: "users#destroy", :as => 'destroy_user'
+
+
+
+  resources :record, :sessions, :users
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

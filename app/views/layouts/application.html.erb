@@ -13,12 +13,17 @@
 
   <div class="element1" display="inline-block" id="element1">
     <nav class="navmenu navmenu-inverse" role="navigation">
-      <%= button_to "Strona główna" , welcome_path%><br>
+      <%= button_to "Strona główna" , welcome_path %><br>
 
       <ul class="nav navmenu-nav">
         <li><%= button_to "Płyty" , records_path, class: "active"%></li><br>
         <li><%= button_to "Mój koszyk" , welcome_path, class: "active"%></li><br>
-        <li><%= button_to "Kontakt" , welcome_path, class: "active"%></li><br>
+        <% if current_user %>
+          <% button_path = current_user %>
+        <% else %>
+          <% button_path = log_in_path %>
+        <% end %>
+        <li><%= button_to "Moje konto", button_path, class: "active"%></li><br>
       </ul>
     </nav>
   </div>

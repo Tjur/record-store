@@ -1,0 +1,19 @@
+<h1>Edytuj konto</h1><br>
+
+<center>
+  <%= form_for @user do |f| %>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p><br>
+    <p>
+      <%= f.label :password, "Hasło" %><br />
+      <%= f.password_field :password %>
+    </p><br>
+    <p>
+      <%= f.label :password_confirmation, "Potwierdź hasło" %><br />
+      <%= f.password_field :password_confirmation %>
+    </p><br>
+    <p class="button"><%= f.submit "Zatwierdź"%></p><br>
+  <% end %>
+</center>
+

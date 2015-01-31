@@ -26,6 +26,7 @@ class RecordController < ApplicationController
   end
 
   def show
+    @record = Record.find(params[:id])
   end
 
   private
@@ -36,5 +37,12 @@ class RecordController < ApplicationController
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def add
+    session[:baskets] ||= Basket.new
+    record = Record.find(params[:id])
+    session[:baskets].add(record)
+    redirect_to records_path
   end
 end

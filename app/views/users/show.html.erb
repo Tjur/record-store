@@ -1,0 +1,26 @@
+<h1>Twoje dane</h1><br>
+
+<center>
+  <table>
+    <tr height="25">
+      <td><b>Email: </b></td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr height="25">
+      <td><b>Imię:</b></td>
+      <td> </td>
+    </tr>
+    <tr height="25">
+      <td><b>Nazwisko:</b></td>
+      <td> </td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr height="40">
+      <td> </td>
+      <td><%= button_to 'Zmień dane', edit_user_path(@user.id) %></td>
+      <td><%= button_to 'Usuń konto', user_path(@user.id), :method => :delete, data: {:confirm => 'Jesteś pewien?'} %></td>
+    </tr>
+  </table>
+</center>
+
