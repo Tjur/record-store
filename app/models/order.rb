@@ -4,5 +4,5 @@ class Order < ActiveRecord::Base
 
   validates :total, presence: true
 
-  enum status: [ :anulowane, :przyjęty_do_realizacji, :wysłane, :oczekuje_na_wpłatę ]
+  enum status: [ :anulowane, :przyjęte_do_realizacji, :w_trakcie_realizacji, :wysłane ]
 end

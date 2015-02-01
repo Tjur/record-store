@@ -33,6 +33,6 @@ class RecordController < ApplicationController
     session[:basket_id] ||= Basket.create.id
     record = Record.find(params[:id])
     Basket.find(session[:basket_id]).update(products: Basket.find(session[:basket_id]).add(record))
-    redirect_to records_path
+    redirect_to records_path, notice: 'Dodano do koszyka'
   end
 end

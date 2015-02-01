@@ -26,17 +26,17 @@ Rails.application.routes.draw do
 
   post '/index', to: 'welcome#index'
 
-  get "/log_in", to: "sessions#new", :as => "log_in"
+  get "/log_in", to: "sessions#new", as: "log_in"
   post "/log_in", to: "sessions#create"
 
-  get "/log_out", to: "sessions#destroy", :as => "log_out"
+  get "/log_out", to: "sessions#destroy", as: "log_out"
 
-  get "/sign_up", to: "users#new", :as => "sign_up"
+  get "/sign_up", to: "users#new", as: "sign_up"
 
   post '/users', to: 'users#create'
   post 'users/:id', to: 'users#show'
   post 'users/:id/edit', to: 'users#edit'
-  delete '/users/:id', to: "users#destroy", :as => 'destroy_user'
+  delete '/users/:id', to: "users#destroy", as: 'destroy_user'
 
   post '/baskets/:id', to: 'baskets#show', as: 'show_basket'
   post '/baskets/:id/remove_product(:record_id)', to: 'baskets#remove_product', as: 'remove_product'
@@ -44,8 +44,7 @@ Rails.application.routes.draw do
   post 'orders/create', to: 'orders#create', as: 'create_order'
 
 
-
-  resources :record, :sessions, :users, :baskets
+  resources :artist, :genre, :record, :sessions, :users, :baskets, :orders
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

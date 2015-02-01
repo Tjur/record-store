@@ -22,11 +22,9 @@
         <% end %>
         <li><%=button_to "Mój koszyk" , show_basket_path(Basket.find(session[:basket_id])), class: "active"%></li><br>
         <% if current_user %>
-          <% button_path = current_user %>
-        <% else %>
-          <% button_path = log_in_path %>
+          <li><%= button_to "Moje zamówienia", root_path, class: "active"%></li><br>
+          <li><%= button_to "Moje konto", current_user, class: "active"%></li><br>
         <% end %>
-        <li><%= button_to "Moje konto", button_path, class: "active"%></li><br>
       </ul>
     </nav>
   </div>

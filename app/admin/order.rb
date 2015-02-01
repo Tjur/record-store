@@ -1,12 +1,19 @@
 ActiveAdmin.register Order do
+  permit_params :status
 
-  actions :index, :show, :edit, :destroy
+  actions :index, :show, :edit, :update, :destroy
 
   filter :created_at, :as => :date_range
 
   index do
     id_column
     column :user
+    column :status do |order|
+      order.status.humanize
+    end
+    column :total do |order|
+      order.total.to_s + '0 zł'
+    end
     column :created_at
     actions
   end
@@ -15,9 +22,24 @@ ActiveAdmin.register Order do
     attributes_table do
       row :id
       row :user
-      row :products
+      row :status do |order|
+        order.status.humanize
+      end
+      #row :products do |order|
+      #  order.products
+      #end
+      row :total do |order|
+        order.total.to_s + '0 zł'
+      end
       row :created_at
     end
+  end
+
+  form do |f|
+    f.inputs "Order Details" do
+      f.input :status, as: :select, include_blank: false, collection: Order.statuses.keys.map{ |status| [status.humanize, status] }
+    end
+    f.actions
   end
 
 
