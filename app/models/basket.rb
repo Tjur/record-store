@@ -1,5 +1,4 @@
 class Basket < ActiveRecord::Base
-  belongs_to :user
   serialize :products, Hash
 
   def add(record)

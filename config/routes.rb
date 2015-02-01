@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
  
+  get 'orders/new'
+
+  get 'orders/create'
+
   get 'sessions/new'
 
   get 'users/new'
@@ -35,6 +39,9 @@ Rails.application.routes.draw do
   delete '/users/:id', to: "users#destroy", :as => 'destroy_user'
 
   post '/baskets/:id', to: 'baskets#show', as: 'show_basket'
+  post '/baskets/:id/remove_product(:record_id)', to: 'baskets#remove_product', as: 'remove_product'
+
+  post 'orders/create', to: 'orders#create', as: 'create_order'
 
 
 

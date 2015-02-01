@@ -15,7 +15,7 @@
 
     <tbody>
       <tr height='10'></tr>
-      <% payment = 0 %>
+      <% total = 0 %>
       <% @basket.products.each do |record, number| %>
         <tr>
           <% album_cover_path = 'album covers/' + record.name.downcase.gsub(/\s/,'_') + '.jpg' %>
@@ -23,10 +23,10 @@
           <td><%=image_tag(album_cover_path, height: '45', width: '45')%></td>
           <td><b><%= record.artist.name + ' - ' + record.name %></b></td>
           <td><b><%= number %></b></td>
-          <% payment += record.price * number %>
+          <% total += record.price * number %>
           <td><b><%= (record.price * number).to_s + '0 zł'%></b></td>
           <td><%= button_to 'Więcej', record %></td>
-          <td><%= button_to 'Usuń', record %></td>
+          <td><%= button_to 'Usuń', remove_product_path(record_id: record.id) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -34,8 +34,8 @@
 
   <div class="action_buttons_header" style="text-align: right;">
     <ul style="list-style: none">
-      <li><b>W sumie do zapłaty: <%= payment.to_s + '0 zł' %></b></li><br>
-      <li><%= button_to 'Złóż zamówienie', show_basket_path(Basket.find(session[:basket_id])) %></li>
+      <li><b>W sumie do zapłaty: <%= total.to_s + '0 zł' %></b></li><br>
+      <li><%= button_to 'Złóż zamówienie', create_order_path(total: total, products: @basket.products) %></li>
     </ul>
   </div>
 

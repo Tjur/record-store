@@ -32,7 +32,7 @@ class RecordController < ApplicationController
   def add
     session[:basket_id] ||= Basket.create.id
     record = Record.find(params[:id])
-    Basket.find(session[:basket_id]).update_attribute(:products, Basket.find(session[:basket_id]).add(record))
+    Basket.find(session[:basket_id]).update(products: Basket.find(session[:basket_id]).add(record))
     redirect_to records_path
   end
 end
