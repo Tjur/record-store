@@ -17,7 +17,10 @@
 
       <ul class="nav navmenu-nav">
         <li><%= button_to "Płyty" , records_path, class: "active"%></li><br>
-        <li><%= button_to "Mój koszyk" , welcome_path, class: "active"%></li><br>
+        <% unless session[:basket_id] %>
+          <% initialize_basket %>
+        <% end %>
+        <li><%=button_to "Mój koszyk" , show_basket_path(Basket.find(session[:basket_id])), class: "active"%></li><br>
         <% if current_user %>
           <% button_path = current_user %>
         <% else %>

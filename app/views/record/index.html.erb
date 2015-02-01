@@ -37,7 +37,7 @@
         <td><%= record.release_year %></td>
         <td><%= record.price.to_s + '0 zł' %></td>
         <td><%= button_to 'Więcej', record %></td>
-        <td><%= button_to 'Dodaj do koszyka', record %></td>
+        <td><%= button_to 'Dodaj do koszyka', add_record_path(record) %></td>
       </tr>
       <tr height="5"></tr>
       <tr height="5"></tr>

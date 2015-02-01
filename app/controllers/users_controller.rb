@@ -29,16 +29,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
     session[:user_id] = nil
-    @user.destroy
+    user.destroy
     redirect_to root_path
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      redirect_to user_path(@user[:id])
+    user = User.find(params[:id])
+    if user.update_attributes(user_params)
+      redirect_to user_path(user[:id])
     else
       render 'edit'
     end

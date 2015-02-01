@@ -29,20 +29,10 @@ class RecordController < ApplicationController
     @record = Record.find(params[:id])
   end
 
-  private
-  
-  def sort_column
-    Record.column_names.include?(params[:sort]) ? params[:sort] : "name"
-  end
-  
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
-
   def add
-    session[:baskets] ||= Basket.new
+    session[:basket_id] ||= Basket.create.id
     record = Record.find(params[:id])
-    session[:baskets].add(record)
+    Basket.find(session[:basket_id]).update_attribute(:products, Basket.find(session[:basket_id]).add(record))
     redirect_to records_path
   end
 end

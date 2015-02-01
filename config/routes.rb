@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   post 'record/index'
   post 'record/:id', to: 'record#show'
+  post 'record/:id/add', to: 'record#add', as: 'add_record'
 
   post '/index', to: 'welcome#index'
 
@@ -33,9 +34,11 @@ Rails.application.routes.draw do
   post 'users/:id/edit', to: 'users#edit'
   delete '/users/:id', to: "users#destroy", :as => 'destroy_user'
 
+  post '/baskets/:id', to: 'baskets#show', as: 'show_basket'
 
 
-  resources :record, :sessions, :users
+
+  resources :record, :sessions, :users, :baskets
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
