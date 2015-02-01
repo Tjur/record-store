@@ -2,14 +2,14 @@
 
 one:
   name: MyString
-  artist_id: 
-  genre_id: 
-  release_year: 1
+  artist_id:
+  genre_id:
+  release_year: 1968
   price: 9.99
 
 two:
   name: MyString
-  artist_id: 
-  genre_id: 
-  release_year: 1
+  artist_id:
+  genre_id:
+  release_year: 1970
   price: 9.99

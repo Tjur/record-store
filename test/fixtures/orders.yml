@@ -2,14 +2,14 @@
 
 one:
   user_id: 
-  total: 
+  total: 30
   total: 
   products: MyText
   status: 1
 
 two:
   user_id: 
-  total: 
+  total: 40
   total: 
   products: MyText
   status: 1

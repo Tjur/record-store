@@ -2,8 +2,17 @@
 
 <center>
   <%= form_for @user do |f| %>
+    <p>
       <%= f.label :email %><br />
       <%= f.text_field :email %>
+    </p><br>
+    <p>
+      <%= f.label :firstname, "Imię" %><br />
+      <%= f.text_field :firstname %>
+    </p><br>
+    <p>
+      <%= f.label :lastname, "Nazwisko" %><br />
+      <%= f.text_field :lastname%>
     </p><br>
     <p>
       <%= f.label :password, "Hasło" %><br />

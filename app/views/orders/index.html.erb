@@ -1,0 +1,26 @@
+<table>
+    <thead>
+      <tr height="25">
+        <th></th>
+        <th>Nr zamówienia</th>
+        <th>Data złożenia zamówienia</th>
+        <th>Wartość zamówienia</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr height='10'></tr>
+      <% @orders.each do |order| %>
+        <tr height='30'>
+          <td><b><%= order.id %></b></td>
+          <td></td>
+          <td><b><%= order.created_at.to_date %></b></td>
+          <td><b><%= order.total.to_s + '0 zł' %></b></td>
+          <td><b><%= order.status.humanize %></b></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+

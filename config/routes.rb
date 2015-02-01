@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'genre/show'
 
+  get 'admin', to: 'admin/admin_users#index'
+
   get '/index', to: 'welcome#index', as: 'welcome'
 
   get 'record/index', to: 'record#index', as: 'records'
@@ -42,6 +44,7 @@ Rails.application.routes.draw do
   post '/baskets/:id/remove_product(:record_id)', to: 'baskets#remove_product', as: 'remove_product'
 
   post 'orders/create', to: 'orders#create', as: 'create_order'
+  post 'orders/index', to: 'orders#index', as: 'orders_index'
 
 
   resources :artist, :genre, :record, :sessions, :users, :baskets, :orders

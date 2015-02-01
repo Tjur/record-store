@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 .navmenu,
 .navbar-offcanvas {
   width: 200px;
@@ -22,9 +23,6 @@
   border-width: 1px;
   border-radius: 4px;
 }
-
-*= require bootstrap.min
-*= require jasny-bootstrap.min
 
 
 #container {width: 960px;}
