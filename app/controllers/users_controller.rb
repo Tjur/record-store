@@ -36,9 +36,9 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.update_attributes(user_params)
-      redirect_to user_path(user[:id])
+      redirect_to user_path(user[:id]), notice: "Zaktualizowano dane"
     else
-      render 'edit'
+      redirect_to edit_user_path(user[:id]), notice: "Edycja nie powiodła się"
     end
   end
 

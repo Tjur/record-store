@@ -29,3 +29,28 @@
 #element1  {float:left; position: fixed; margin-left: 10px}
 #element2  {margin: 0 auto;  width: 700px; text-align: center}
 #element3  {float:right; margin-right: 20px}
+
+a:link {
+  color: #348E00;
+  text-decoration: none;
+  font-family: Verdana;
+  font-weight:bold;
+}
+a:visited {
+  text-decoration: none;
+  color: #348E00;
+  font-family: Verdana;
+  font-weight:bold;
+}
+a:hover {
+  text-decoration: none;
+  color: #348E00;
+  font-family: Verdana;
+  font-weight:bold;
+}
+a:active {
+  text-decoration: none;
+  color: #348E00;
+  font-family: Verdana;
+  font-weight:bold;
+}

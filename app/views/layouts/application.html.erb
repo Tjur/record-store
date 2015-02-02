@@ -12,18 +12,18 @@
   <h1 style="font-family : Courier; color: white; background-color: black; font-size: 400%;", align="center"><b>Record Store</b></h1>
 
   <div class="element1" display="inline-block" id="element1">
-    <nav class="navmenu navmenu-inverse" role="navigation">
-      <%= button_to "Strona główna" , welcome_path %><br>
+    <nav class="navbar navbar-default" role="navigation">
 
       <ul class="nav navmenu-nav">
-        <li><%= button_to "Płyty" , records_path, class: "active"%></li><br>
+        <li><%= link_to "Strona główna" , welcome_path %></li><br>
+        <li><%= link_to "Płyty" , records_path%></li><br>
         <% if session[:basket_id].nil? %>
           <% initialize_basket %>
         <% end %>
-        <li><%=button_to "Mój koszyk" , show_basket_path(Basket.find(session[:basket_id])), class: "active"%></li><br>
+        <li><%= link_to "Mój koszyk" , show_basket_path(Basket.find(session[:basket_id])), class: "active"%></li><br>
         <% if current_user %>
-          <li><%= button_to "Moje zamówienia", orders_index_path, class: "active"%></li><br>
-          <li><%= button_to "Moje konto", current_user, class: "active"%></li><br>
+          <li><%= link_to "Moje zamówienia", orders_index_path, :method => :post, class: "active"%></li><br>
+          <li><%= link_to "Moje konto", current_user, class: "active"%></li><br>
         <% end %>
       </ul>
     </nav>

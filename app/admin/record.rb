@@ -19,7 +19,9 @@ ActiveAdmin.register Record do
     column :artist
     column :genre
     column :release_year
-    column :price
+    column :price do |record|
+      record.price.to_s + '0 zł'
+    end
     actions
   end
 
@@ -35,7 +37,9 @@ ActiveAdmin.register Record do
     row :artist
     row :genre
     row :release_year
-    row :price
+    row :price do |record|
+      record.price.to_s + '0 zł'
+    end
   end
 end
 

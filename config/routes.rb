@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 
   post '/users', to: 'users#create'
   post 'users/:id', to: 'users#show'
-  post 'users/:id/edit', to: 'users#edit'
+  post 'users/:id/edit', to: 'users#edit', as: 'edit_user'
   delete '/users/:id', to: "users#destroy", as: 'destroy_user'
 
   post '/baskets/:id', to: 'baskets#show', as: 'show_basket'

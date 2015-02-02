@@ -60,3 +60,5 @@ Record.create(id: 15, genre: country, artist: willie_nelson, name: "Stardust",
   price: 45.00, release_year: 1978)
 Record.create(id: 16, genre: blues, artist: muddy_waters, name: "Fathers And Sons", 
   price: 42.00, release_year: 1969)
+Record.create(id: 17, genre: rock, artist: genesis, name: "Genesis", 
+  price: 37.50, release_year: 1983)
